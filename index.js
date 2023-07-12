@@ -2,10 +2,10 @@ const https = require("https");
 const fs = require("fs");
 
 // Obtener parametros desde la línea de comandos
-const fileName = process.argv[2];
-const fileExtension = process.argv[3];
-const indicator = process.argv[4];
-const amount = process.argv[5];
+const Archivo = process.argv[2];
+const Extension = process.argv[3];
+const indicador = process.argv[4];
+const monto = process.argv[5];
 
 // Se realiza la consulta a la API según ejemplo API
 https
@@ -20,25 +20,25 @@ https
       const dailyIndicators = JSON.parse(data);
 
       // Obtener el valor de conversión del indicador económico escogido
-      const conversionRate = dailyIndicators[indicator].valor;
+      const tasaConversion = dailyIndicators[indicador].valor;
 
       // Obtenemos la fecha del momento de cambio
-      const currentDate = new Date().toString();
+      const fechaActual = new Date().toString();
 
       // Calcular cambio
-      const convertedAmount = amount / conversionRate;
+      const cambioIndicador = monto / tasaConversion;
 
       // Creamos el contenido para el archivo
-      const fileContent = `A la fecha: ${currentDate}
+      const fileContent = `A la fecha: ${fechaActual}
 Fue realizada cotización con los siguientes datos:
-Cantidad de pesos a convertir: ${amount} pesos
-Convertido a "${indicator}" da un total de:
-$${convertedAmount.toFixed(2)}`;
+Cantidad de pesos a convertir: ${monto} pesos
+Convertido a "${indicador}" da un total de:
+$${cambioIndicador.toFixed(2)}`;
 
       // Crear el archivo
-      fs.writeFile(`${fileName}.${fileExtension}`, fileContent, (err) => {
+      fs.writeFile(`${Archivo}.${Extension}`, fileContent, (err) => {
         if (err) throw err;
-        console.log(`El archivo ${fileName}.${fileExtension} ha sido creado.`);
+        console.log(`El archivo ${Archivo}.${Extension} ha sido creado.`);
         console.log("Contenido del archivo:");
         console.log(fileContent);
       });

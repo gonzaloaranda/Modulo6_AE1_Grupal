@@ -1,14 +1,14 @@
 const { exec } = require("child_process");
 
 // Define los argumentos necesarios para la aplicación
-const fileName = "cotiza";
-const fileExtension = "txt";
-const indicator = "dolar";
-const amount = "250000";
+const Archivo = "cotiza";
+const Extension = "txt";
+const indicador = "dolar";
+const monto = "250000";
 
 // Ejecuta la aplicación con los argumentos correspondientes
 const child = exec(
-  `node index.js ${fileName} ${fileExtension} ${indicator} ${amount}`,
+  `node index.js ${Archivo} ${Extension} ${indicador} ${monto}`,
   (error, stdout, stderr) => {
     if (error) {
       console.error(`Error al ejecutar la aplicación: ${error}`);
