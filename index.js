@@ -47,3 +47,12 @@ $${cambioIndicador.toFixed(2)}`;
   .on("error", (err) => {
     console.error("Error al realizar la consulta a la API:", err);
   });
+
+// Grupo Verde
+  // Cecilia Montero
+  // Karla Mieres
+  // Gonzalo Aranda
+  // Andrea Pilquiman
+  // Zimram Blanco
+  // Felipe Parra
+
